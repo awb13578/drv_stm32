@@ -1,5 +1,13 @@
 #include "mcu_gpio.h"
 
+const gpio_method_t stm32_gpio_method = {
+    .init   = mcu_gpio_init,
+    .set    = mcu_gpio_set,
+    .clear  = mcu_gpio_clear,
+    .toggle = mcu_gpio_toggle,
+    .read   = mcu_gpio_read
+};
+
 void mcu_gpio_set(gpio_ctx_t *ctx)
 {
     HAL_GPIO_WritePin((GPIO_TypeDef *)ctx->hw_cfg.port, ctx->hw_cfg.pin, GPIO_PIN_SET);
