@@ -1,0 +1,35 @@
+# ==========================================
+# 1. Bỏ qua các thư mục biên dịch (Build Output)
+# ==========================================
+Debug/
+Release/
+**/Debug/
+**/Release/
+
+# ==========================================
+# 2. Bỏ qua các file rác sinh ra trong quá trình Biên dịch/Build
+# ==========================================
+*.o
+*.d
+*.su
+*.cyclo
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.mk
+
+# ==========================================
+# 3. Bỏ qua cấu hình cá nhân của IDE (STM32CubeIDE / Eclipse)
+# ==========================================
+.settings/
+.cproject.user
+*.launch
+
+# ==========================================
+# 4. Giữ lại các file cấu hình quan trọng của dự án (Dù trùng đuôi)
+# ==========================================
+!.project
+!.cproject
+!*.ioc
