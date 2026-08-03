@@ -49,6 +49,7 @@
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Lib\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Src\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Tst\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\Core\Inc&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1928458639" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -126,6 +127,7 @@
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Lib\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Src\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Tst\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\Core\Inc&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1496606905" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>

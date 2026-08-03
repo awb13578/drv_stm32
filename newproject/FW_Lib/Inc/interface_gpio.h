@@ -4,8 +4,10 @@
 #include "_config_lib.h"
 #include "drv_config.h"
 
-typedef struct {
+typedef struct GPIO_Regs GPIO_Regs;
 
+typedef struct {
+	uint32_t status;
 } gpio_sw_data_t;
 
 typedef struct {
