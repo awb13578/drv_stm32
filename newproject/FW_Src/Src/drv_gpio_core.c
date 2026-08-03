@@ -12,7 +12,7 @@ void drv_gpio_init(void)
         gpio_inst[i].ctx.id          = i;
         gpio_inst[i].ctx.hw_cfg.port = g_board_gpio_map[i].port;
         gpio_inst[i].ctx.hw_cfg.pin  = g_board_gpio_map[i].pin;
-        gpio_inst[i].method          = g_board_gpio_map[i].method;
+        gpio_inst[i].method          = *g_board_gpio_map[i].method;
 
         if (gpio_inst[i].method.init != NULL)
         {

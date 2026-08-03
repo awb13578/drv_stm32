@@ -46,10 +46,12 @@
 									<listOptionValue builtIn="false" value="../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32G0xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
+									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Tst&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Src&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Lib\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Src\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\FW_Tst\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\newproject\newproject\newproject\Core\Inc&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1928458639" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -78,6 +80,8 @@
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="FW_Lib"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="FW_Src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
