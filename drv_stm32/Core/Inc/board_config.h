@@ -6,7 +6,7 @@
 typedef struct {
     void *port;
     uint32_t pin;
-    gpio_method_t *method;
+    const gpio_method_t *method;
 } drv_gpio_hw_map_t;
 
 extern const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX];
