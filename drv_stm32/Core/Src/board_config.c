@@ -35,3 +35,46 @@ const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX] = {
         .method = &stm32_gpio_method
     },
 };
+
+//const drv_adc_hw_map_t g_board_adc_map[ADC_ID_MAX] = {
+//	[ADC_ID_VAC_SENS] = {
+//		.port   = GPIOA,
+//		.pin    = GPIO_PIN_0,
+//		.method = &stm32_adc_method
+//	},
+//	[ADC_ID_THERMAL_PFC_SENSE] = {
+//		.port   = GPIOA,
+//		.pin    = GPIO_PIN_1,
+//		.method = &stm32_adc_method
+//	},
+//	[ADC_ID_VBAT_SENS] = {
+//		.port   = GPIOA,
+//		.pin    = GPIO_PIN_2,
+//		.method = &stm32_adc_method
+//	},
+//	[ADC_ID_IBAT_SENS] = {
+//		.port   = GPIOA,
+//		.pin    = GPIO_PIN_3,
+//		.method = &stm32_adc_method
+//	},
+//	[ADC_ID_VOUT_SENS] = {
+//		.port   = GPIOA,
+//		.pin    = GPIO_PIN_4,
+//		.method = &stm32_adc_method
+//	},
+//	[ADC_ID_THERMAL_SR_SENSE] = {
+//		.port   = GPIOA,
+//		.pin    = GPIO_PIN_5,
+//		.method = &stm32_adc_method
+//	},
+//	[ADC_ID_IPRI_SENS] = {
+//		.port   = GPIOB,
+//		.pin    = GPIO_PIN_0,
+//		.method = &stm32_adc_method
+//	},
+//	[ADC_ID_PFC_VCOMP] = {
+//		.port   = GPIOA,
+//		.pin    = GPIO_PIN_15,
+//		.method = &stm32_adc_method
+//	},
+//};
