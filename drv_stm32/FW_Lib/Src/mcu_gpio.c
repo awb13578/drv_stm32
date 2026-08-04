@@ -32,10 +32,8 @@ uint32_t mcu_gpio_read(gpio_ctx_t *ctx)
 
 void mcu_gpio_init(gpio_ctx_t *ctx)
 {
-    if (ctx == NULL || ctx->hw_cfg.port == NULL)
-    {
-        return;
-    }
+    if (ctx == NULL || ctx->hw_cfg.port == NULL) return;
+
     GPIO_InitTypeDef GPIO_InitStruct = {0};
 
         GPIO_InitStruct.Pin = ctx->hw_cfg.pin;
