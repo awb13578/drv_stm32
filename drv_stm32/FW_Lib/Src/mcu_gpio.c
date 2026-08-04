@@ -34,12 +34,4 @@ void mcu_gpio_init(gpio_ctx_t *ctx)
 {
     if (ctx == NULL || ctx->hw_cfg.port == NULL) return;
 
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-        GPIO_InitStruct.Pin = ctx->hw_cfg.pin;
-        GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; // Đặt làm Output
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
-        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-
-        HAL_GPIO_Init((GPIO_TypeDef *)ctx->hw_cfg.port, &GPIO_InitStruct);
 }
