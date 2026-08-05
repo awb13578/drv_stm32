@@ -37,6 +37,17 @@ void drv_adc_init(void)
     }
 }
 
+void drv_adc_start_of_conversion(adc_id_e id)
+{
+    if (id >= ADC_ID_MAX) return;
+
+    /* Gọi con trỏ hàm start_cnv từ layer mcu_adc */
+    if (g_adc_objs[id].method && g_adc_objs[id].method->start_cnv)
+    {
+        g_adc_objs[id].method->start_cnv(&g_adc_objs[id].ctx);
+    }
+}
+
 uint16_t drv_adc_get_value(adc_id_e id)
 {
     if (id >= ADC_ID_MAX) return 0;
