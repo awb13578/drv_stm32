@@ -50,6 +50,7 @@
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Src\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Src&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Lib&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\Core\Src&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1928458639" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -136,6 +137,7 @@
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Tst\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Src\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Lib\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\Core\Src&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1496606905" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>

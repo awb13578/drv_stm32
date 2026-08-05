@@ -42,9 +42,9 @@ uint16_t drv_adc_read_raw(adc_id_e id)
     if (id >= ADC_ID_MAX) return 0;
 
     /* Gọi con trỏ hàm get_value từ layer mcu_adc */
-    if (g_adc_objs[id].method && g_adc_objs[id].method->get_value)
+    if (g_adc_objs[id].method && g_adc_objs[id].method->read_raw)
     {
-        return g_adc_objs[id].method->get_value(&g_adc_objs[id].ctx);
+        return g_adc_objs[id].method->read_raw(&g_adc_objs[id].ctx);
     }
 
     return 0;

@@ -4,6 +4,9 @@
 #include "_config_lib.h"
 #include "drv_config.h"
 
+#define MSP_ADC_RESOLUTION 4095U // 12-bit ADC max value
+#define MSP_ADC_VREF_MV 3300U // Reference voltage in mV
+
 typedef struct {
     uint16_t value;
 } adc_sw_data_t;
