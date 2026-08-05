@@ -37,7 +37,7 @@ void drv_adc_init(void)
     }
 }
 
-uint16_t drv_adc_read_raw(adc_id_e id)
+uint16_t drv_adc_get_value(adc_id_e id)
 {
     if (id >= ADC_ID_MAX) return 0;
 
@@ -50,12 +50,12 @@ uint16_t drv_adc_read_raw(adc_id_e id)
     return 0;
 }
 
-uint32_t drv_adc_read_voltage_mv(adc_id_e id)
+uint32_t drv_adc_calibrate(adc_id_e id)
 {
     if (id >= ADC_ID_MAX) return 0;
 
     /* Lấy giá trị Raw rồi quy đổi ra mV */
-    uint16_t raw = drv_adc_read_raw(id);
+    uint16_t raw = drv_adc_get_value(id);
     return ((uint32_t)raw * MSP_ADC_VREF_MV) / MSP_ADC_RESOLUTION;
 }
 
