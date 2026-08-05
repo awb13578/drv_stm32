@@ -1,4 +1,5 @@
 #include "mcu_gpio.h"
+#ifdef ENABLE_GPIO
 
 const gpio_method_t stm32_gpio_method = {
     .init   = mcu_gpio_init,
@@ -35,3 +36,4 @@ void mcu_gpio_init(gpio_ctx_t *ctx)
     if (ctx == NULL || ctx->hw_cfg.port == NULL) return;
 
 }
+#endif

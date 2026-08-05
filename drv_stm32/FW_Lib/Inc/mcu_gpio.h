@@ -2,7 +2,7 @@
 #define MCU_GPIO_H_
 
 #include "interface_gpio.h"
-#include "main.h"
+#include "stm32g0xx_hal.h"
 
 void mcu_gpio_set(gpio_ctx_t *ctx);
 void mcu_gpio_clear(gpio_ctx_t *ctx);

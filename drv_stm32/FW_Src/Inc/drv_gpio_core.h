@@ -1,7 +1,6 @@
 #ifndef DRV_GPIO_CORE_H_
 #define DRV_GPIO_CORE_H_
 
-#include "drv_config.h"
 #include "interface_gpio.h"
 
 typedef struct {

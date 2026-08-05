@@ -1,5 +1,5 @@
 #include "mcu_adc.h"
-#include "stm32g0xx_hal.h"
+#ifdef ENABLE_ADC
 
 // 1. Hàm đọc giá trị số thô (Raw: 0 - 4095)
 static uint16_t mcu_adc_read_raw(adc_ctx_t *ctx) {
@@ -30,3 +30,4 @@ void adc_create_obj(adc_objt_t *p_adc_obj) {
     p_adc_obj->method->read_raw        = mcu_adc_read_raw;
     p_adc_obj->method->read_voltage_mv = mcu_adc_read_voltage_mv;
 }
+#endif
