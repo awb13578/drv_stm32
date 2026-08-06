@@ -1,55 +1,83 @@
-#include "drv_gpio_core.h"
 #include "board_config.h"
-// giả sử có file board config chứa dữ liệu các nút
-// mcu.h sẽ dc khai báo trong board config
-// hàm g_board_gpio_map sẽ có trong board config
-static drv_gpio_obj_t gpio_inst[GPIO_ID_MAX];
+#include "drv_gpio_core.h"
 
-void drv_gpio_init(void)
-{
-    for (uint8_t i = 0; i < GPIO_ID_MAX; i++)
-    {
-        gpio_inst[i].ctx.id          = i;
-        gpio_inst[i].ctx.hw_cfg.port = g_board_gpio_map[i].port;
-        gpio_inst[i].ctx.hw_cfg.pin  = g_board_gpio_map[i].pin;
-        gpio_inst[i].method          = *g_board_gpio_map[i].method;
+#ifdef ENABLE_GPIO
 
-        if (gpio_inst[i].method.init != NULL)
-        {
-            gpio_inst[i].method.init(&gpio_inst[i].ctx);
-        }
-    }
+void drv_gpio_init(void) {
+	for (uint8_t i=0; i<GPIO_ID_MAX; i++) {
+	const drv_gpio_hw_map_t *map = &g_board_gpio_map[i];
+		if (map->method && map->method->init) {
+			gpio_ctx_t ctx = {
+					.id 	= i,
+					.hw_cfg = {
+							.port 	= map->port,
+							.pin 	= map->pin,
+					},
+		};
+		map->method->init(&ctx);
+		}
+	}
 }
 
-void drv_gpio_set_pin(uint8_t gpio_id)
-{
-    if (gpio_id < GPIO_ID_MAX && gpio_inst[gpio_id].method.set != NULL)
-    {
-        gpio_inst[gpio_id].method.set(&gpio_inst[gpio_id].ctx);
-    }
+void drv_gpio_set(uint8_t gpio_id) {
+	if (gpio_id>=GPIO_ID_MAX) return;
+	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
+	if (map->method && map->method->set) {
+		gpio_ctx_t ctx = {
+			.id 	= gpio_id,
+			.hw_cfg = {
+				.port 	= map->port,
+				.pin 	= map->pin,
+			},
+		};
+		map->method->set(&ctx);
+	}
 }
 
-void drv_gpio_clear_pin(uint8_t gpio_id)
-{
-    if (gpio_id < GPIO_ID_MAX && gpio_inst[gpio_id].method.clear != NULL)
-    {
-        gpio_inst[gpio_id].method.clear(&gpio_inst[gpio_id].ctx);
-    }
+void drv_gpio_clear(uint8_t gpio_id) {
+	if (gpio_id>=GPIO_ID_MAX) return;
+	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
+	if (map->method && map->method->clear) {
+		gpio_ctx_t ctx = {
+			.id 	= gpio_id,
+			.hw_cfg = {
+				.port 	= map->port,
+				.pin 	= map->pin,
+			},
+		};
+		map->method->clear(&ctx);
+	}
 }
 
-void drv_gpio_toggle_pin(uint8_t gpio_id)
-{
-    if (gpio_id < GPIO_ID_MAX && gpio_inst[gpio_id].method.toggle != NULL)
-    {
-        gpio_inst[gpio_id].method.toggle(&gpio_inst[gpio_id].ctx);
-    }
+void drv_gpio_toggle(uint8_t gpio_id) {
+	if (gpio_id>=GPIO_ID_MAX) return;
+	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
+	if (map->method && map->method->toggle) {
+		gpio_ctx_t ctx = {
+			.id 	= gpio_id,
+			.hw_cfg = {
+				.port 	= map->port,
+				.pin 	= map->pin,
+			},
+		};
+		map->method->toggle(&ctx);
+	}
 }
 
-uint32_t drv_gpio_read_pin(uint8_t gpio_id)
-{
-    if (gpio_id < GPIO_ID_MAX && gpio_inst[gpio_id].method.read != NULL)
-    {
-        return gpio_inst[gpio_id].method.read(&gpio_inst[gpio_id].ctx);
-    }
-    return 0;
+uint32_t drv_gpio_read(uint8_t gpio_id) {
+	if (gpio_id>=GPIO_ID_MAX) return GPIO_STATE_ERROR;
+	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
+	if (map->method && map->method->read) {
+		gpio_ctx_t ctx = {
+			.id 	= gpio_id,
+			.hw_cfg = {
+				.port 	= map->port,
+				.pin 	= map->pin,
+			},
+		};
+		return map->method->read(&ctx);
+	}
+	return GPIO_STATE_ERROR;
 }
+
+#endif /* ENABLE_GPIO */

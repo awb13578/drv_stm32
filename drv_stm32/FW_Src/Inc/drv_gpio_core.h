@@ -3,16 +3,13 @@
 
 #include "interface_gpio.h"
 
-typedef struct {
-    gpio_ctx_t ctx;
-    gpio_method_t method;
-} drv_gpio_obj_t;
+#ifdef ENABLE_GPIO
 
 void drv_gpio_init(void);
+void drv_gpio_set(uint8_t gpio_id);
+void drv_gpio_clear(uint8_t gpio_id);
+void drv_gpio_toggle(uint8_t gpio_id);
+uint32_t drv_gpio_read(uint8_t gpio_id);
 
-void drv_gpio_set_pin(uint8_t gpio_id);
-void drv_gpio_clear_pin(uint8_t gpio_id);
-void drv_gpio_toggle_pin(uint8_t gpio_id);
-uint32_t drv_gpio_read_pin(uint8_t gpio_id);
-
-#endif
+#endif /* ENABLE_GPIO */
+#endif /* DRV_GPIO_CORE_H_ */
