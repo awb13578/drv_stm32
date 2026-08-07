@@ -3,5 +3,6 @@
 
 #define ENABLE_GPIO
 #define ENABLE_ADC
+#define ENABLE_TIMER
 
 #endif /* _CONFIG_LIB_H_ */
