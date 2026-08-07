@@ -16,7 +16,7 @@ void drv_adc_init(void) {
 					},
 			};
 			map->method->init(&ctx);
-		};
+		}
 	}
 }
 
@@ -33,7 +33,7 @@ void drv_adc_start_of_conversion (uint8_t adc_id) {
 				},
 		};
 		map->method->start_cnv(&ctx);
-	};
+	}
 }
 
 
@@ -50,13 +50,13 @@ void drv_adc_calibrate (uint8_t adc_id) {
 				},
 		};
 		map->method->calibrate(&ctx);
-	};
+	}
 }
 
-float drv_adc_get_value (uint8_t adc_id) {
+uint16_t drv_adc_get_value (uint8_t adc_id) {
 	if (adc_id>=ADC_ID_MAX) return ADC_STATE_ERROR;
 	const drv_adc_hw_map_t *map = &g_board_adc_map[adc_id];
-	if (map->method && map->method->get_voltage) {
+	if (map->method && map->method->get_value) {
 		adc_ctx_t ctx = {
 				.id 	= adc_id,
 				.hw_cfg = {
@@ -65,8 +65,8 @@ float drv_adc_get_value (uint8_t adc_id) {
 						.dma_index	= map->dma_index,
 				},
 		};
-		return map->method->get_voltage(&ctx);
-	};
+		return map->method->get_value(&ctx);
+	}
 	return ADC_STATE_ERROR;
 }
 

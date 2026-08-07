@@ -19,11 +19,10 @@ static void mcu_adc_calibrate (adc_ctx_t *ctx) {
 	}
 }
 
-static float mcu_adc_get_voltage (adc_ctx_t *ctx) {
+static uint16_t mcu_adc_get_value (adc_ctx_t *ctx) {
 	if (ctx && ctx->hw_cfg.hadc) {
 			if (HAL_ADC_PollForConversion((ADC_HandleTypeDef *)ctx->hw_cfg.hadc,10) == HAL_OK) {
-				uint16_t raw = HAL_ADC_GetValue((ADC_HandleTypeDef *)ctx->hw_cfg.hadc);
-				return ((float)raw * 3.3f) / 4095.0f;
+				return HAL_ADC_GetValue((ADC_HandleTypeDef *)ctx->hw_cfg.hadc);
 			}
 			return ADC_STATE_ERROR;
 		}
@@ -34,7 +33,7 @@ const adc_method_t stm32_adc_method = {
 		.init	  	 = mcu_adc_init,
 		.start_cnv 	 = mcu_adc_start_cnv,
 		.calibrate 	 = mcu_adc_calibrate,
-		.get_voltage = mcu_adc_get_voltage,
+		.get_value = mcu_adc_get_value,
 };
 
 #endif /* ENABLE_ADC */

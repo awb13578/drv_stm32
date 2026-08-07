@@ -22,4 +22,9 @@ typedef enum {
 	ADC_ID_MAX
 } adc_id_t;
 
+typedef enum {
+	TIMER_2,
+	TIMER_ID_MAX
+} timer_id_t;
+
 #endif /* DRV_CONFIG_H_ */

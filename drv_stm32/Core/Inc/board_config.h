@@ -26,5 +26,14 @@ typedef struct {
 
 extern const drv_adc_hw_map_t g_board_adc_map[ADC_ID_MAX];
 
+/* ----------------------------------TIMER-------------------------------------- */
+#include "interface_timer.h"
+
+typedef struct {
+	void *htim;
+	const timer_method_t *method;
+} drv_timer_hw_map_t;
+
+extern const drv_timer_hw_map_t g_board_timer_map[TIMER_ID_MAX];
 
 #endif /* BOARD_CONFIG_H_ */
