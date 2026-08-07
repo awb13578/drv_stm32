@@ -2,5 +2,6 @@
 #define _CONFIG_LIB_H_
 
 #define ENABLE_GPIO
+#define ENABLE_ADC
 
 #endif /* _CONFIG_LIB_H_ */
