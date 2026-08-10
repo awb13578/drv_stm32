@@ -19,7 +19,10 @@ typedef struct timer_ctx {
 
 typedef struct {
 	void (*init) (timer_ctx_t *ctx);
+	void (*start_it) (timer_ctx_t *ctx);
 	uint32_t (*get_cnt) (timer_ctx_t *ctx);
 } timer_method_t;
+
+void drv_timer_interrupt_callback(void);
 
 #endif /* INTERFACE_TIMER_H_ */
