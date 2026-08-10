@@ -22,7 +22,7 @@ static void mcu_timer_start_it (timer_ctx_t *ctx) {
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	if (htim->Instance == &htim2) {
+	if (htim->Instance == TIM2) {
 		drv_timer_interrupt_callback();
 	}
 }

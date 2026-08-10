@@ -48,7 +48,8 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 float voltage;
-uint32_t cnt;
+volatile uint32_t cnt;
+volatile uint32_t count=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -62,7 +63,12 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void drv_timer_interrupt_callback() {
+	if (count++>=9999) {
+		drv_gpio_toggle_pin(LED2);
+		count=0;
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -99,7 +105,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   drv_adc_calibrate (MCU_VAC_SENS);
   drv_adc_start_of_conversion(MCU_VAC_SENS);
-  drv_timer_init();
+//  drv_timer_init();
+  drv_timer_start_interrupt();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -109,9 +116,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  drv_gpio_toggle_pin(LED2);
+	  drv_gpio_toggle_pin(LED1);
 	  HAL_Delay(1000);
 	  voltage = drv_adc_get_value(MCU_VAC_SENS);
+	  cnt=drv_get_counter_value();
   }
   /* USER CODE END 3 */
 }
