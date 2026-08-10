@@ -2,6 +2,8 @@
 #include "main.h"
 
 #include "mcu_stm32g0xx_gpio.h"
+#include "mcu_stm32g0xx_adc.h"
+#include "mcu_stm32g0xx_timer.h"
 
 const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX] = {
 		[LED1] = {
@@ -35,8 +37,6 @@ const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX] = {
 				.method = &stm32_gpio_method
 		},
 };
-
-#include "mcu_stm32g0xx_adc.h"
 
 const drv_adc_hw_map_t g_board_adc_map[ADC_ID_MAX] = {
 		[MCU_VAC_SENS] = {
@@ -82,8 +82,6 @@ const drv_adc_hw_map_t g_board_adc_map[ADC_ID_MAX] = {
 				.method    = &stm32_adc_method
 		},
 };
-
-#include "mcu_stm32g0xx_timer.h"
 
 const drv_timer_hw_map_t g_board_timer_map[TIMER_ID_MAX] = {
 		[TIMER_2] = {

@@ -23,7 +23,7 @@ typedef enum {
 } adc_id_t;
 
 typedef enum {
-	TIMER_2,
+	TIMER_2 	= 0,
 	TIMER_ID_MAX
 } timer_id_t;
 

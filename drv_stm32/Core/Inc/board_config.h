@@ -2,9 +2,11 @@
 #define BOARD_CONFIG_H_
 
 #include "stm32g0xx_hal.h"
+#include "interface_gpio.h"
+#include "interface_adc.h"
+#include "interface_timer.h"
 
 /* ----------------------------------GPIO-------------------------------------- */
-#include "interface_gpio.h"
 
 typedef struct {
 	void *port;
@@ -15,7 +17,6 @@ typedef struct {
 extern const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX];
 
 /* ----------------------------------ADC-------------------------------------- */
-#include "interface_adc.h"
 
 typedef struct {
 	ADC_HandleTypeDef *hadc;
@@ -27,10 +28,9 @@ typedef struct {
 extern const drv_adc_hw_map_t g_board_adc_map[ADC_ID_MAX];
 
 /* ----------------------------------TIMER-------------------------------------- */
-#include "interface_timer.h"
 
 typedef struct {
-	void *htim;
+	TIM_HandleTypeDef *htim;
 	const timer_method_t *method;
 } drv_timer_hw_map_t;
 

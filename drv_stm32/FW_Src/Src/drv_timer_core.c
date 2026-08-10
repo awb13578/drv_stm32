@@ -18,14 +18,14 @@ void drv_timer_init (void) {
 
 uint32_t drv_get_counter_value (void) {
 	const drv_timer_hw_map_t *map = &g_board_timer_map[0];
-	if (map->method && map->method->init) {
+	if (map->method && map->method->get_cnt) {
 		timer_ctx_t ctx = {
 				.id 		= TIMER_2,
 				.hw_cfg 	= {
 						.htim = map->htim,
 				},
 		};
-		map->method->get_cnt(&ctx);
+		return map->method->get_cnt(&ctx);
 	}
 	return 0;
 }
