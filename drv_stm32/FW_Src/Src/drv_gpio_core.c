@@ -14,7 +14,7 @@ void drv_gpio_init(void) {
 							.pin 	= map->pin,
 					},
 			};
-		map->method->init(&ctx);
+			map->method->init(&ctx);
 		}
 	}
 }
