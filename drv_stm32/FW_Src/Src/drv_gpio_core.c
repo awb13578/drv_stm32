@@ -13,13 +13,13 @@ void drv_gpio_init(void) {
 							.port 	= map->port,
 							.pin 	= map->pin,
 					},
-		};
-		map->method->init(&ctx);
+			};
+			map->method->init(&ctx);
 		}
 	}
 }
 
-void drv_gpio_set(uint8_t gpio_id) {
+void drv_gpio_set_pin(uint8_t gpio_id) {
 	if (gpio_id>=GPIO_ID_MAX) return;
 	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
 	if (map->method && map->method->set) {
@@ -34,7 +34,7 @@ void drv_gpio_set(uint8_t gpio_id) {
 	}
 }
 
-void drv_gpio_clear(uint8_t gpio_id) {
+void drv_gpio_clear_pin(uint8_t gpio_id) {
 	if (gpio_id>=GPIO_ID_MAX) return;
 	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
 	if (map->method && map->method->clear) {
@@ -49,7 +49,7 @@ void drv_gpio_clear(uint8_t gpio_id) {
 	}
 }
 
-void drv_gpio_toggle(uint8_t gpio_id) {
+void drv_gpio_toggle_pin(uint8_t gpio_id) {
 	if (gpio_id>=GPIO_ID_MAX) return;
 	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
 	if (map->method && map->method->toggle) {
@@ -64,7 +64,7 @@ void drv_gpio_toggle(uint8_t gpio_id) {
 	}
 }
 
-uint32_t drv_gpio_read(uint8_t gpio_id) {
+uint32_t drv_gpio_read_pin(uint8_t gpio_id) {
 	if (gpio_id>=GPIO_ID_MAX) return GPIO_STATE_ERROR;
 	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
 	if (map->method && map->method->read) {
