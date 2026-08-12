@@ -3,8 +3,8 @@
 | STT | Ngày thay đổi | Phiên bản Firmware  | Nội dung cập nhật                                                          | Người thực hiện   | Status   |
 |-----|---------------|---------------------|----------------------------------------------------------------------------|-------------------|----------|
 | 1   | 01/08/2026    | v1.0.0              | Khởi tạo dự án 							         | Nguyễn Quốc Anh   | Obsolete |
-| 2   | 12/08/2026    | v1.0.1              | Bổ sung hậu tố đằng sau các hàm của driver gpio 				 | Nguyễn Quốc Anh   | Active   |
-
+| 2   | 12/08/2026    | v1.0.1              | Bổ sung hậu tố đằng sau các hàm của driver gpio 				 | Nguyễn Quốc Anh   | Obsolete |
+| 3   | 12/08/2026    | v1.0.2              | Bổ sung hậu tố đằng sau các hàm của driver gpio(file .h) | Nguyễn Quốc Anh   | Active   |
 
 
 Phiên bản được đánh theo cấu trúc: MAJOR.MINOR.PATCH
