@@ -57,6 +57,20 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define MCU_VAC_SENS_Pin GPIO_PIN_0
+#define MCU_VAC_SENS_GPIO_Port GPIOA
+#define MCU_THERMAL_PFC_SENSE_Pin GPIO_PIN_1
+#define MCU_THERMAL_PFC_SENSE_GPIO_Port GPIOA
+#define MCU_VBAT_SENS_Pin GPIO_PIN_2
+#define MCU_VBAT_SENS_GPIO_Port GPIOA
+#define MCU_IBAT_SENS_Pin GPIO_PIN_3
+#define MCU_IBAT_SENS_GPIO_Port GPIOA
+#define MCU_VOUT_SENS_Pin GPIO_PIN_4
+#define MCU_VOUT_SENS_GPIO_Port GPIOA
+#define MCU_THERMAL_SR_SENSE_Pin GPIO_PIN_5
+#define MCU_THERMAL_SR_SENSE_GPIO_Port GPIOA
+#define MCU_IPRI_SENS_Pin GPIO_PIN_0
+#define MCU_IPRI_SENS_GPIO_Port GPIOB
 #define LED4_Pin GPIO_PIN_9
 #define LED4_GPIO_Port GPIOA
 #define LED3_Pin GPIO_PIN_6
