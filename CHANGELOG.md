@@ -4,8 +4,8 @@
 |-----|---------------|---------------------|----------------------------------------------------------------------------|-------------------|----------|
 | 1   | 01/08/2026    | v1.0.0              | Khởi tạo dự án 							         | Nguyễn Quốc Anh   | Obsolete |
 | 2   | 12/08/2026    | v1.0.1              | Bổ sung hậu tố đằng sau các hàm của driver gpio 				 | Nguyễn Quốc Anh   | Obsolete |
-| 3   | 12/08/2026    | v1.0.2              | Bổ sung hậu tố đằng sau các hàm của driver gpio(file .h) | Nguyễn Quốc Anh   | Active   |
-
+| 3   | 12/08/2026    | v1.0.2              | Bổ sung hậu tố đằng sau các hàm của driver gpio(file .h) | Nguyễn Quốc Anh   | Obsolete |
+| 3   | 12/08/2026    | v1.0.3              | Phát triển tầng driver Timer | Nguyễn Quốc Anh   | Active   |
 
 Phiên bản được đánh theo cấu trúc: MAJOR.MINOR.PATCH
 ### **MAJOR** — Thay đổi lớn, *breaking changes*
