@@ -11,4 +11,9 @@ typedef enum {
     GPIO_ID_MAX
 } gpio_id_t;
 
+typedef enum {
+	TIMER2		= 0,
+	TIMER_ID_MAX
+} timer_id_t;
+
 #endif /* DRV_CONFIG_H_ */

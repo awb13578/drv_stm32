@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "drv_gpio_core.h"
+#include "drv_timer_core.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,7 +44,8 @@
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-
+uint32_t i;
+uint32_t count;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,7 +58,12 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void drv_interrupt_callback (void) {
+	if (i++>=9999) {
+		drv_gpio_toggle_pin(LED1);
+		i=0;
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -89,8 +96,10 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM2_Init();
-  /* USER CODE BEGIN 2 */
 
+  /* USER CODE BEGIN 2 */
+  drv_gpio_init();
+  drv_timer_start_interrupt();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -100,6 +109,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  count=drv_timer_get_counter_value();
+
   }
   /* USER CODE END 3 */
 }
