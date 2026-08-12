@@ -1,0 +1,94 @@
+Configuration	newproject
+STM32CubeMX 	6.18.0
+Date	08/12/2026
+MCU	STM32G0B1KBUx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+ADC1	IN0	ADC1_IN0	PA0
+ADC1	IN1	ADC1_IN1	PA1
+ADC1	IN2	ADC1_IN2	PA2
+ADC1	IN3	ADC1_IN3	PA3
+ADC1	IN4	ADC1_IN4	PA4
+ADC1	IN5	ADC1_IN5	PA5
+ADC1	IN8	ADC1_IN8	PB0
+SYS	Serial Wire	SYS_SWCLK	PA14-BOOT0
+SYS	Serial Wire	SYS_SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+SYS	Dead Battery Signals disabled	SYS_VS_DBSignals	VP_SYS_VS_DBSignals
+TIM2	Internal Clock	TIM2_VS_ClockSourceINT	VP_TIM2_VS_ClockSourceINT
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+7	PA0	ADC1_IN0	mcu_Vac_sens
+8	PA1	ADC1_IN1	mcu_Thermal_PFC_sense
+9	PA2	ADC1_IN2	mcuVbat_sens
+10	PA3	ADC1_IN3	mcuIbat_sens
+11	PA4	ADC1_IN4	mcuVout_sens
+12	PA5	ADC1_IN5	mcu_Thermal_SR_Sense
+15	PB0	ADC1_IN8	mcuIpri_sens
+19	PA9	GPIO_Output	LED4
+20	PC6	GPIO_Output	LED3
+22	PA11 [PA9]	GPIO_Output	LED2
+23	PA12 [PA10]	GPIO_Output	LED1
+24	PA13	SYS_SWDIO	SWD_LLC
+25	PA14-BOOT0	SYS_SWCLK	SWCLK_LLC
+PERIPHERALS	MODES	FUNCTIONS	PINS
+ADC1	IN0	ADC1_IN0	PA0
+ADC1	IN1	ADC1_IN1	PA1
+ADC1	IN2	ADC1_IN2	PA2
+ADC1	IN3	ADC1_IN3	PA3
+ADC1	IN4	ADC1_IN4	PA4
+ADC1	IN5	ADC1_IN5	PA5
+ADC1	IN8	ADC1_IN8	PB0
+SYS	Serial Wire	SYS_SWCLK	PA14-BOOT0
+SYS	Serial Wire	SYS_SWDIO	PA13
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+SYS	Dead Battery Signals disabled	SYS_VS_DBSignals	VP_SYS_VS_DBSignals
+TIM2	Internal Clock	TIM2_VS_ClockSourceINT	VP_TIM2_VS_ClockSourceINT
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+7	PA0	ADC1_IN0	mcu_Vac_sens
+8	PA1	ADC1_IN1	mcu_Thermal_PFC_sense
+9	PA2	ADC1_IN2	mcuVbat_sens
+10	PA3	ADC1_IN3	mcuIbat_sens
+11	PA4	ADC1_IN4	mcuVout_sens
+12	PA5	ADC1_IN5	mcu_Thermal_SR_Sense
+15	PB0	ADC1_IN8	mcuIpri_sens
+19	PA9	GPIO_Output	LED4
+20	PC6	GPIO_Output	LED3
+22	PA11 [PA9]	GPIO_Output	LED2
+23	PA12 [PA10]	GPIO_Output	LED1
+24	PA13	SYS_SWDIO	SWD_LLC
+25	PA14-BOOT0	SYS_SWCLK	SWCLK_LLC
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : newproject
+Project Folder : D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32
+Toolchain / IDE : STM32CubeIDE
+Firmware Package Name and Version : STM32Cube FW_G0 V1.6.3
+
+
+Code Generation Settings : 
+STM32Cube MCU packages and embedded software packs : Copy only the necessary library files
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : No
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : 
+
+
+
+
+
