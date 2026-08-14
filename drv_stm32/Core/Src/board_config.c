@@ -3,35 +3,83 @@
 #include "mcu_stm32g0xx_timer.h"
 #include "mcu_stm32g0xx_adc.h"
 
-const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX] = {
+gpio_obj_t gpio_inst[GPIO_ID_MAX] = {
 		[LED1] = {
-			.port   = GPIOA,
-			.pin    = GPIO_PIN_12,
+			.ctx 	= {
+					.id		 = LED1,
+					.hw_cfg	 = {
+							.port	= GPIOA,
+							.pin	= GPIO_PIN_12,
+					},
+					.sw_data = {
+							.state = 0,
+					},
+			},
 			.method = &stm32_gpio_method
 		},
 		[LED2] = {
-			.port   = GPIOA,
-			.pin    = GPIO_PIN_11,
+			.ctx 	= {
+					.id		= LED2,
+					.hw_cfg	= {
+							.port = GPIOA,
+							.pin  = GPIO_PIN_11,
+					},
+					.sw_data = {
+							.state = 0,
+					},
+			},
 			.method = &stm32_gpio_method
 		},
 		[LED3] = {
-			.port   = GPIOC,
-			.pin    = GPIO_PIN_6,
+			.ctx 	= {
+					.id		= LED3,
+					.hw_cfg	= {
+							.port = GPIOC,
+							.pin  = GPIO_PIN_6,
+					},
+					.sw_data = {
+							.state = 0,
+					},
+			},
 			.method = &stm32_gpio_method
 		},
 		[LED4] = {
-			.port   = GPIOA,
-			.pin    = GPIO_PIN_9,
+			.ctx 	= {
+					.id		= LED4,
+					.hw_cfg	= {
+							.port = GPIOA,
+							.pin  = GPIO_PIN_9,
+					},
+					.sw_data = {
+							.state = 0,
+					},
+			},
 			.method = &stm32_gpio_method
 		},
 		[MCU_PFC_RELAY] = {
-			.port   = GPIOB,
-			.pin    = GPIO_PIN_3,
+			.ctx 	= {
+					.id		= MCU_PFC_RELAY,
+					.hw_cfg	= {
+							.port = GPIOB,
+							.pin  = GPIO_PIN_3,
+					},
+					.sw_data = {
+							.state = 0,
+					},
+			},
 			.method = &stm32_gpio_method
 		},
 		[MCU_LLC_RELAY] = {
-			.port   = GPIOB,
-			.pin    = GPIO_PIN_4,
+			.ctx 	= {
+					.id		= MCU_LLC_RELAY,
+					.hw_cfg	= {
+							.port = GPIOB,
+							.pin  = GPIO_PIN_4,
+					},
+					.sw_data = {
+							.state = 0,
+					},
+			},
 			.method = &stm32_gpio_method
 		},
 };

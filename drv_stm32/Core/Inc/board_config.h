@@ -6,13 +6,16 @@
 #include "interface_timer.h"
 #include "interface_adc.h"
 
-typedef struct {
-	void *port;
-	uint16_t pin;
-	const gpio_method_t *method;
-} drv_gpio_hw_map_t ;
+/*                              GPIO                                   */
 
-extern const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX];
+typedef struct {
+	gpio_ctx_t ctx;
+	const gpio_method_t *method;
+} gpio_obj_t ;
+
+extern gpio_obj_t gpio_inst[GPIO_ID_MAX];
+
+/*                              TIMER                                  */
 
 typedef struct {
 	void *htim;
@@ -21,6 +24,8 @@ typedef struct {
 
 extern TIM_HandleTypeDef htim2;
 extern const drv_timer_hw_map_t g_board_timer_map[TIMER_ID_MAX];
+
+/*                               ADC                                    */
 
 typedef struct {
 	adc_ctx_t ctx;

@@ -5,77 +5,45 @@
 
 void drv_gpio_init(void) {
 	for (uint8_t i=0; i<GPIO_ID_MAX; i++) {
-	const drv_gpio_hw_map_t *map = &g_board_gpio_map[i];
-		if (map->method && map->method->init) {
-			gpio_ctx_t ctx = {
-					.id 	= i,
-					.hw_cfg = {
-							.port 	= map->port,
-							.pin 	= map->pin,
-					},
-		};
-		map->method->init(&ctx);
+	gpio_obj_t *obj = &gpio_inst[i];
+		if (obj->method && obj->method->init) {
+			obj->method->init(&obj->ctx);
 		}
 	}
 }
 
 void drv_gpio_set_pin (uint8_t gpio_id) {
 	if (gpio_id>=GPIO_ID_MAX) return;
-	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
-	if (map->method && map->method->set) {
-		gpio_ctx_t ctx = {
-			.id 	= gpio_id,
-			.hw_cfg = {
-				.port 	= map->port,
-				.pin 	= map->pin,
-			},
-		};
-		map->method->set(&ctx);
+	gpio_obj_t *obj = &gpio_inst[gpio_id];
+	if (obj->method && obj->method->set) {
+		obj->method->set(&obj->ctx);
+		obj->ctx.sw_data.state = 1;
 	}
 }
 
 void drv_gpio_clear_pin (uint8_t gpio_id) {
 	if (gpio_id>=GPIO_ID_MAX) return;
-	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
-	if (map->method && map->method->clear) {
-		gpio_ctx_t ctx = {
-			.id 	= gpio_id,
-			.hw_cfg = {
-				.port 	= map->port,
-				.pin 	= map->pin,
-			},
-		};
-		map->method->clear(&ctx);
+	gpio_obj_t *obj = &gpio_inst[gpio_id];
+	if (obj->method && obj->method->clear) {
+		obj->method->clear(&obj->ctx);
+		obj->ctx.sw_data.state = 0;
 	}
 }
 
 void drv_gpio_toggle_pin (uint8_t gpio_id) {
 	if (gpio_id>=GPIO_ID_MAX) return;
-	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
-	if (map->method && map->method->toggle) {
-		gpio_ctx_t ctx = {
-			.id 	= gpio_id,
-			.hw_cfg = {
-				.port 	= map->port,
-				.pin 	= map->pin,
-			},
-		};
-		map->method->toggle(&ctx);
+	gpio_obj_t *obj = &gpio_inst[gpio_id];
+	if (obj->method && obj->method->toggle) {
+		obj->method->toggle(&obj->ctx);
+		obj->ctx.sw_data.state = !obj->ctx.sw_data.state;
 	}
 }
 
 uint32_t drv_gpio_read_pin (uint8_t gpio_id) {
 	if (gpio_id>=GPIO_ID_MAX) return GPIO_STATE_ERROR;
-	const drv_gpio_hw_map_t *map = &g_board_gpio_map[gpio_id];
-	if (map->method && map->method->read) {
-		gpio_ctx_t ctx = {
-			.id 	= gpio_id,
-			.hw_cfg = {
-				.port 	= map->port,
-				.pin 	= map->pin,
-			},
-		};
-		return map->method->read(&ctx);
+	gpio_obj_t *obj = &gpio_inst[gpio_id];
+	if (obj->method && obj->method->read) {
+		return obj->method->read(&obj->ctx);
 	}
 	return GPIO_STATE_ERROR;
 }

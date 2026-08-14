@@ -8,16 +8,19 @@
 
 #define GPIO_STATE_ERROR 2
 
-struct gpio_ctx;
-
 typedef struct {
 	void *port;
 	uint16_t pin;
 } gpio_hw_cfg_t ;
 
-typedef struct gpio_ctx {
-	uint8_t id;
+typedef struct {
+	uint8_t state;
+} gpio_sw_data_t;
+
+typedef struct {
+	gpio_id_t id;
 	gpio_hw_cfg_t hw_cfg;
+	gpio_sw_data_t sw_data;
 } gpio_ctx_t ;
 
 typedef struct {
