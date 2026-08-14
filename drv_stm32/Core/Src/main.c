@@ -114,7 +114,7 @@ int main(void)
   drv_adc_init();
 
   drv_adc_calibrate();
-  drv_adc_start_of_conversation();
+  drv_adc_start_of_conversion();
 
 
   /* USER CODE END 2 */

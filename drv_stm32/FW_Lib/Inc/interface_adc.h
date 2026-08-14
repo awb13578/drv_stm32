@@ -24,7 +24,7 @@ typedef struct {
 typedef struct {
 	void (*init) (adc_ctx_t *ctx);
 	void (*calibrate) (adc_ctx_t *ctx);
-	void (*start_conversation) (adc_ctx_t *ctx);
+	void (*start_conversion) (adc_ctx_t *ctx);
 	uint16_t (*get_value) (adc_ctx_t *ctx);
 } adc_method_t;
 

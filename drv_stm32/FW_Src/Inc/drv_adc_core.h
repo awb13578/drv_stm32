@@ -7,7 +7,7 @@
 
 void drv_adc_init (void);
 void drv_adc_calibrate (void);
-void drv_adc_start_of_conversation (void);
+void drv_adc_start_of_conversion (void);
 uint16_t drv_adc_get_value (uint8_t id);
 
 #endif /* ENABLE_ADC */
