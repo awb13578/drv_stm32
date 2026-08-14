@@ -10,7 +10,7 @@ static void mcu_adc_calibrate (adc_ctx_t *ctx) {
 	}
 }
 
-static void mcu_adc_start_conversation (adc_ctx_t *ctx) {
+static void mcu_adc_start_conversion (adc_ctx_t *ctx) {
 	if (ctx && ctx->hw_cfg.hadc) {
 		HAL_ADC_Start_DMA((ADC_HandleTypeDef *)ctx->hw_cfg.hadc, (uint32_t *)adc_dma_buf, ADC_ID_MAX);
 	}
@@ -26,7 +26,7 @@ static uint16_t mcu_adc_get_value (adc_ctx_t *ctx) {
 const adc_method_t stm32_adc_method = {
 		.init				= NULL,
 		.calibrate			= mcu_adc_calibrate,
-		.start_conversation	= mcu_adc_start_conversation,
+		.start_conversion	= mcu_adc_start_conversion,
 		.get_value			= mcu_adc_get_value,
 };
 
