@@ -4,6 +4,7 @@
 #include "stm32g0xx_hal.h"
 #include "interface_gpio.h"
 #include "interface_timer.h"
+#include "interface_adc.h"
 
 typedef struct {
 	void *port;
@@ -20,5 +21,13 @@ typedef struct {
 
 extern TIM_HandleTypeDef htim2;
 extern const drv_timer_hw_map_t g_board_timer_map[TIMER_ID_MAX];
+
+typedef struct {
+	void *hadc;
+	const adc_method_t *method;
+} drv_adc_hw_map_t ;
+
+extern ADC_HandleTypeDef hadc1;
+extern const drv_adc_hw_map_t g_board_adc_map[ADC_ID_MAX];
 
 #endif /* BOARD_CONFIG_H_ */
