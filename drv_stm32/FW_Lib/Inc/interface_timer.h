@@ -6,15 +6,18 @@
 #include <stdint.h>
 #include <stddef.h>
 
-struct timer_ctx;
-
 typedef struct {
 	void *htim;
 } timer_hw_cfg_t;
 
-typedef struct timer_ctx {
+typedef struct {
+	uint32_t counter;
+} timer_sw_data_t;
+
+typedef struct {
 	uint8_t id;
 	timer_hw_cfg_t hw_cfg;
+	timer_sw_data_t sw_data;
 } timer_ctx_t;
 
 typedef struct {

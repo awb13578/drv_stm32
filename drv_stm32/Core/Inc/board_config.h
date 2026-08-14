@@ -15,12 +15,12 @@ typedef struct {
 extern const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX];
 
 typedef struct {
-	void *htim;
+	timer_ctx_t ctx;
 	const timer_method_t *method;
-} drv_timer_hw_map_t ;
+} timer_obj_t ;
 
 extern TIM_HandleTypeDef htim2;
-extern const drv_timer_hw_map_t g_board_timer_map[TIMER_ID_MAX];
+extern timer_obj_t timer_inst[TIMER_ID_MAX];
 
 typedef struct {
 	adc_ctx_t ctx;
