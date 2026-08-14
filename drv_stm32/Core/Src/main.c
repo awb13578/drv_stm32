@@ -48,9 +48,12 @@ DMA_HandleTypeDef hdma_adc1;
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
+
 uint32_t i;
-uint32_t count;
-uint16_t voltage;
+//uint32_t count;
+uint16_t voltage_ch1;
+uint16_t voltage_ch2;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -123,7 +126,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  voltage = drv_adc_get_value(MCU_VAC_SENS);
+	  voltage_ch1 = drv_adc_get_value(MCU_VBAT_SENS);
+	  HAL_Delay(200);
+	  voltage_ch2 = drv_adc_get_value(MCU_THERMAL_PFC_SENSE);
 	  HAL_Delay(200);
 //	  count = drv_timer_get_counter_value(); //only run when drv_timer_init() is available
 

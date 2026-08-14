@@ -43,33 +43,96 @@ const drv_timer_hw_map_t g_board_timer_map[TIMER_ID_MAX] = {
 		},
 };
 
-const drv_adc_hw_map_t g_board_adc_map[ADC_ID_MAX] = {
+adc_obj_t adc_inst[ADC_ID_MAX] = {
 		[MCU_VAC_SENS] = {
-			.hadc    = &hadc1,
+			.ctx	 = {
+					.id		= MCU_VAC_SENS,
+					.hw_cfg	= {
+							.hadc    = &hadc1,
+							.channel = ADC_CHANNEL_0,
+					},
+					.sw_data = {
+							.value   = 0
+					},
+			},
 			.method  = &stm32_adc_method
 		},
 		[MCU_THERMAL_PFC_SENSE] = {
-			.hadc    = &hadc1,
+			.ctx	 = {
+					.id		= MCU_THERMAL_PFC_SENSE,
+					.hw_cfg	= {
+							.hadc    = &hadc1,
+							.channel = ADC_CHANNEL_1,
+					},
+					.sw_data = {
+							.value   = 0
+					},
+			},
 			.method  = &stm32_adc_method
 		},
 		[MCU_VBAT_SENS] = {
-			.hadc    = &hadc1,
+			.ctx	 = {
+					.id		= MCU_VBAT_SENS,
+					.hw_cfg	= {
+							.hadc    = &hadc1,
+							.channel = ADC_CHANNEL_2,
+					},
+					.sw_data = {
+							.value   = 0
+					},
+			},
 			.method  = &stm32_adc_method
 		},
 		[MCU_IBAT_SENS] = {
-			.hadc    = &hadc1,
+			.ctx	 = {
+					.id		= MCU_IBAT_SENS,
+					.hw_cfg	= {
+							.hadc    = &hadc1,
+							.channel = ADC_CHANNEL_3,
+					},
+					.sw_data = {
+							.value   = 0
+					},
+			},
 			.method  = &stm32_adc_method
 		},
 		[MCU_VOUT_SENS] = {
-			.hadc    = &hadc1,
+			.ctx	 = {
+					.id		= MCU_VOUT_SENS,
+					.hw_cfg	= {
+							.hadc    = &hadc1,
+							.channel = ADC_CHANNEL_4,
+					},
+					.sw_data = {
+							.value   = 0
+					},
+			},
 			.method  = &stm32_adc_method
 		},
 		[MCU_THERMAL_SR_SENSE] = {
-			.hadc    = &hadc1,
+			.ctx	 = {
+					.id		= MCU_THERMAL_SR_SENSE,
+					.hw_cfg	= {
+							.hadc    = &hadc1,
+							.channel = ADC_CHANNEL_5,
+					},
+					.sw_data = {
+							.value   = 0
+					},
+			},
 			.method  = &stm32_adc_method
 		},
 		[MCU_IPRI_SENS] = {
-			.hadc    = &hadc1,
+			.ctx	 = {
+					.id		= MCU_IPRI_SENS,
+					.hw_cfg	= {
+							.hadc    = &hadc1,
+							.channel = ADC_CHANNEL_8,
+					},
+					.sw_data = {
+							.value   = 0
+					},
+			},
 			.method  = &stm32_adc_method
 		},
 };

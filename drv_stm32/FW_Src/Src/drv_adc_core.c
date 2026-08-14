@@ -5,15 +5,15 @@
 
 void drv_adc_init (void) {
 	for (uint8_t i=0; i<ADC_ID_MAX; i++) {
-		const drv_adc_hw_map_t *map = &g_board_adc_map[i];
-		if (map->method && map->method->init) {
+		adc_obj_t *obj = &adc_inst[i];
+		if (obj->method && obj->method->init) {
 			adc_ctx_t ctx = {
 					.id 	= i,
 					.hw_cfg = {
-							.hadc 	= map->hadc,
+							.hadc 	= obj->ctx.hw_cfg.hadc,
 					},
 			};
-			map->method->init(&ctx);
+			obj->method->init(&ctx);
 		}
 	}
 }
@@ -21,17 +21,17 @@ void drv_adc_init (void) {
 void drv_adc_calibrate (void) {
 	void *last_hadc = NULL;
 	for (uint8_t i=0; i<ADC_ID_MAX; i++) {
-		const drv_adc_hw_map_t *map = &g_board_adc_map[i];
-		if (map->method && map->method->calibrate) {
-			if (last_hadc==NULL || last_hadc!=map->hadc) {
+		adc_obj_t *obj = &adc_inst[i];
+		if (obj->method && obj->method->calibrate) {
+			if (last_hadc==NULL || last_hadc!=obj->ctx.hw_cfg.hadc) {
 				adc_ctx_t ctx = {
 						.id 	= i,
 						.hw_cfg = {
-								.hadc 	= map->hadc,
+								.hadc 	= obj->ctx.hw_cfg.hadc,
 						},
 				};
-				map->method->calibrate(&ctx);
-				last_hadc = map->hadc;
+				obj->method->calibrate(&ctx);
+				last_hadc = obj->ctx.hw_cfg.hadc;
 			}
 		}
 	}
@@ -40,17 +40,17 @@ void drv_adc_calibrate (void) {
 void drv_adc_start_of_conversation (void) {
 	void *last_hadc = NULL;
 	for (uint8_t i=0; i<ADC_ID_MAX; i++) {
-		const drv_adc_hw_map_t *map = &g_board_adc_map[i];
-		if (map->method && map->method->start_conversation) {
-			if (last_hadc==NULL || last_hadc!=map->hadc) {
+		adc_obj_t *obj = &adc_inst[i];
+		if (obj->method && obj->method->start_conversation) {
+			if (last_hadc==NULL || last_hadc!=obj->ctx.hw_cfg.hadc) {
 				adc_ctx_t ctx = {
 						.id 	= i,
 						.hw_cfg = {
-								.hadc 	= map->hadc,
+								.hadc 	= obj->ctx.hw_cfg.hadc,
 						},
 				};
-				map->method->start_conversation(&ctx);
-				last_hadc = map->hadc;
+				obj->method->start_conversation(&ctx);
+				last_hadc = obj->ctx.hw_cfg.hadc;
 			}
 		}
 	}
@@ -58,15 +58,16 @@ void drv_adc_start_of_conversation (void) {
 
 uint16_t drv_adc_get_value (uint8_t id) {
 	if (id >= ADC_ID_MAX) return 0;
-	const drv_adc_hw_map_t *map = &g_board_adc_map[id];
-	if (map->method && map->method->get_value) {
+	adc_obj_t *obj = &adc_inst[id];
+	if (obj->method && obj->method->get_value) {
 		adc_ctx_t ctx = {
 				.id		= id,
 				.hw_cfg = {
-						.hadc 	= map->hadc,
+						.hadc 	= obj->ctx.hw_cfg.hadc,
 				},
 		};
-		return map->method->get_value(&ctx);
+		obj->ctx.sw_data.value = obj->method->get_value(&ctx);
+		return obj->method->get_value(&ctx);
 	}
 	return 0;
 }

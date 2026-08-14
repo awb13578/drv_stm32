@@ -6,15 +6,19 @@
 #include <stdint.h>
 #include <stddef.h>
 
-struct adc_ctx;
-
 typedef struct {
 	void *hadc;
+	uint32_t channel;
 } adc_hw_cfg_t;
 
-typedef struct adc_ctx {
-	uint8_t id;
+typedef struct {
+	uint16_t value;
+} adc_sw_data_t;
+
+typedef struct {
+	adc_id_t id;
 	adc_hw_cfg_t hw_cfg;
+	adc_sw_data_t sw_data;
 } adc_ctx_t;
 
 typedef struct {
