@@ -36,9 +36,17 @@ const drv_gpio_hw_map_t g_board_gpio_map[GPIO_ID_MAX] = {
 		},
 };
 
-const drv_timer_hw_map_t g_board_timer_map[TIMER_ID_MAX] = {
+timer_obj_t timer_inst[TIMER_ID_MAX] = {
 		[TIMER2] = {
-			.htim	= &htim2,
+			.ctx	= {
+					.id	 	= TIMER2,
+					.hw_cfg	= {
+						.htim	= &htim2,
+					},
+					.sw_data	= {
+						.counter	= 0,
+					},
+			},
 			.method = &stm32_timer_method
 		},
 };
