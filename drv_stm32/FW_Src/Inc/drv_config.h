@@ -27,4 +27,11 @@ typedef enum {
     ADC_ID_MAX
 } adc_id_t;
 
+typedef enum {
+	UART_LLC 		= 0,
+	UART_ID_MAX
+//	UART_TX_LLC			/* PB8 (Pin 32)	*/
+//	UART_RX_LLC			/* PB9 (Pin 1)	*/
+	} uart_id_t;
+
 #endif /* DRV_CONFIG_H_ */

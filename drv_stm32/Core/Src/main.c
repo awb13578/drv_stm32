@@ -24,6 +24,8 @@
 #include "drv_gpio_core.h"
 #include "drv_timer_core.h"
 #include "drv_adc_core.h"
+#include "drv_uart_core.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,11 +54,8 @@ DMA_HandleTypeDef hdma_usart3_rx;
 DMA_HandleTypeDef hdma_usart3_tx;
 
 /* USER CODE BEGIN PV */
-
 uint32_t i;
-//uint32_t count;
-uint16_t voltage_ch1;
-uint16_t voltage_ch2;
+char *data;
 
 /* USER CODE END PV */
 
@@ -117,11 +116,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
   drv_gpio_init();
   drv_timer_start_interrupt();
-  drv_adc_init();
-
-  drv_adc_calibrate();
-  drv_adc_start_of_conversion();
-
+  drv_uart_init();
+  drv_uart_send_message(UART_LLC,123);
+  HAL_Delay(1000);
+  drv_uart_send_message(UART_LLC,"abc123");
 
   /* USER CODE END 2 */
 
@@ -132,11 +130,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  voltage_ch1 = drv_adc_get_value(MCU_VBAT_SENS);
-	  HAL_Delay(200);
-	  voltage_ch2 = drv_adc_get_value(MCU_THERMAL_PFC_SENSE);
-	  HAL_Delay(200);
-//	  count = drv_timer_get_counter_value(); //only run when drv_timer_init() is available
+	  data = drv_uart_receive_message(UART_LLC);
+
+	      if (data != NULL) {
+	          drv_uart_send_message(UART_LLC, data);
+	      }
+
 
   }
   /* USER CODE END 3 */

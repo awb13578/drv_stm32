@@ -5,6 +5,7 @@
 #include "interface_gpio.h"
 #include "interface_timer.h"
 #include "interface_adc.h"
+#include "interface_uart.h"
 
 /*                              GPIO                                   */
 
@@ -34,5 +35,15 @@ typedef struct {
 
 extern ADC_HandleTypeDef hadc1;
 extern adc_obj_t adc_inst[ADC_ID_MAX];
+
+/*                               UART                                   */
+
+typedef struct {
+	uart_ctx_t ctx;
+	const uart_method_t *method;
+} uart_obj_t;
+
+extern UART_HandleTypeDef huart3;
+extern uart_obj_t uart_inst[UART_ID_MAX];
 
 #endif /* BOARD_CONFIG_H_ */
