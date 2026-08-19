@@ -78,6 +78,10 @@ void drv_interrupt_callback (void) {
 		i=0;
 	}
 }
+
+void drv_uart_rx_callback (void) {
+	drv_uart_send_message(UART_LLC,data);
+}
 /* USER CODE END 0 */
 
 /**
@@ -119,8 +123,17 @@ int main(void)
   drv_uart_init();
   drv_uart_send_message(UART_LLC,123);
   HAL_Delay(1000);
+  drv_uart_send_message(UART_LLC,(char)'A');
+  HAL_Delay(1000);
   drv_uart_send_message(UART_LLC,"abc123");
+  HAL_Delay(1000);
+  uint16_t y = 0xAAB1;
+  drv_uart_send_message(UART_LLC,y);
+  uint8_t x = 0xAA;
+  HAL_Delay(1000);
+  drv_uart_send_message(UART_LLC,x);
 
+  data = drv_uart_receive_message(UART_LLC);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -130,11 +143,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  data = drv_uart_receive_message(UART_LLC);
 
-	      if (data != NULL) {
-	          drv_uart_send_message(UART_LLC, data);
-	      }
 
 
   }

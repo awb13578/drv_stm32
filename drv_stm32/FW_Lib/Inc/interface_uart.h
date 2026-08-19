@@ -16,7 +16,6 @@ typedef struct {
 typedef struct {
 	uint8_t rx_size;
 	uint8_t rx_buffer[UART_RX_BUFFER_SIZE];
-	uint8_t rx_flag_ready;
 	uint8_t tx_size;
 	uint8_t tx_buffer[UART_TX_BUFFER_SIZE];
 } uart_sw_data_t;

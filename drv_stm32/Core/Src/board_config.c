@@ -204,7 +204,6 @@ uart_obj_t uart_inst[UART_ID_MAX] = {
 					.sw_data	= {
 						.rx_size		= 0,
 						.rx_buffer 		= {0},
-						.rx_flag_ready	= 0,
 						.tx_size		= 0,
 						.tx_buffer		= {0},
 					},
