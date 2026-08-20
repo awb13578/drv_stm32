@@ -56,7 +56,8 @@ DMA_HandleTypeDef hdma_usart3_tx;
 /* USER CODE BEGIN PV */
 uint32_t i;
 uint8_t *data;
-uint8_t tx[1];
+uint8_t tx[2];
+uint32_t count;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -72,16 +73,16 @@ static void MX_USART3_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void drv_interrupt_callback (void) {
-	if (i++>=9999) {
-		drv_gpio_toggle_pin(LED1);
-		i=0;
-	}
-}
+//void drv_interrupt_callback (void) {
+//	if (i++>=9999) {
+//		drv_gpio_toggle_pin(LED1);
+//		i=0;
+//	}
+//}
 
 void drv_uart_rx_callback (uint16_t size) {
-
-	drv_uart_send_message(UART_LLC ,data ,size);
+	count++;
+//	drv_uart_send_message(UART_LLC ,data ,size);
 }
 /* USER CODE END 0 */
 
@@ -120,20 +121,12 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   drv_gpio_init();
-  drv_timer_start_interrupt();
+//  drv_timer_start_interrupt();
   drv_uart_init();
   data = drv_uart_receive_message(UART_LLC);
-//  drv_uart_send_message(UART_LLC,(const uint8_t *)"A",1);
-//  HAL_Delay(1000);
-//  drv_uart_send_message(UART_LLC,(const uint8_t *)"abc123",6);
-//  HAL_Delay(1000);
-//  uint16_t y = 0xAAB1;
-//  drv_uart_send_message(UART_LLC,(const uint8_t *)&y,sizeof(y));
-//
-//
-//
+
 	  tx[0] = 0xA;
-//	  tx[1] = 0xB;
+	  tx[1] = 0xB;
 
   /* USER CODE END 2 */
 
@@ -375,8 +368,7 @@ static void MX_USART3_UART_Init(void)
   huart3.Init.OverSampling = UART_OVERSAMPLING_16;
   huart3.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
   huart3.Init.ClockPrescaler = UART_PRESCALER_DIV1;
-  huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_MSBFIRST_INIT;
-  huart3.AdvancedInit.MSBFirst = UART_ADVFEATURE_MSBFIRST_ENABLE;
+  huart3.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
   if (HAL_UART_Init(&huart3) != HAL_OK)
   {
     Error_Handler();
