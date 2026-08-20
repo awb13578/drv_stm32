@@ -206,6 +206,7 @@ uart_obj_t uart_inst[UART_ID_MAX] = {
 						.rx_buffer 		= {0},
 						.tx_size		= 0,
 						.tx_buffer		= {0},
+						.flag_tx_busy		= 0,
 					},
 			},
 			.method = &stm32_uart_method
