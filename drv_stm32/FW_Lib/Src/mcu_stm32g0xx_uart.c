@@ -31,6 +31,8 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 	if (uart_ctx == NULL || !uart_ctx->hw_cfg.huart) return;
 	uart_ctx->sw_data.rx_size = Size;
 	drv_uart_rx_callback(uart_ctx->sw_data.rx_size);
+	// Clear UART flags
+	__HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_OREF | UART_CLEAR_NEF | UART_CLEAR_PEF | UART_CLEAR_FEF | UART_CLEAR_IDLEF);
 	HAL_UARTEx_ReceiveToIdle_DMA(uart_ctx->hw_cfg.huart, uart_ctx->sw_data.rx_buffer, sizeof(uart_ctx->sw_data.rx_buffer));
 }
 

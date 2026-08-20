@@ -46,11 +46,8 @@
 									<listOptionValue builtIn="false" value="../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32G0xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
-									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Lib\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Src\Inc&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Src&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Lib&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\Core\Src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;E:\Git\DRVstm32\drv_stm32\drv_stm32\FW_Lib\Inc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;E:\Git\DRVstm32\drv_stm32\drv_stm32\FW_Src\Inc&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1928458639" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -138,6 +135,7 @@
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Src\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\FW_Lib\Inc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;D:\D Downloads\Intern_EVESELAB\SourceCode\Github\drv_stm32\drv_stm32\drv_stm32\Core\Src&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;E:\Git\DRVstm32\drv_stm32\drv_stm32\FW_Lib\Inc&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1496606905" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
