@@ -8,7 +8,7 @@ static void mcu_uart_send_message (uart_ctx_t *ctx) {
 	if (ctx && ctx->hw_cfg.huart) {
 		HAL_UART_Transmit_DMA(ctx->hw_cfg.huart, ctx->sw_data.tx_buffer, ctx->sw_data.tx_size);
 		ctx->sw_data.flag_tx_busy = 1;
-		if (HAL_UART_Transmit_DMA(ctx->hw_cfg.huart, ctx->sw_data.tx_buffer, ctx->sw_data.tx_size) != HAL_OK) ctx->sw_data.flag_tx_busy = 0;
+//		if (HAL_UART_Transmit_DMA(ctx->hw_cfg.huart, ctx->sw_data.tx_buffer, ctx->sw_data.tx_size) != HAL_OK) ctx->sw_data.flag_tx_busy = 0;
 	}
 }
 

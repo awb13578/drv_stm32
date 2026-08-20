@@ -7,8 +7,8 @@
 #include <stddef.h>
 #include <string.h>
 
-#define UART_RX_BUFFER_SIZE 64
-#define UART_TX_BUFFER_SIZE 64
+#define UART_RX_BUFFER_SIZE 16
+#define UART_TX_BUFFER_SIZE 16
 
 typedef struct {
 	void *huart;
