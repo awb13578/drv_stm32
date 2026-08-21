@@ -31,4 +31,9 @@ typedef struct {
 	uint32_t (*read) (gpio_ctx_t *ctx);
 } gpio_method_t ;
 
+typedef struct {
+	gpio_ctx_t ctx;
+	const gpio_method_t *method;
+} gpio_obj_t ;
+
 #endif /* INTERFACE_GPIO_H_ */

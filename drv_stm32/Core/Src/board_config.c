@@ -2,6 +2,7 @@
 #include "mcu_stm32g0xx_gpio.h"
 #include "mcu_stm32g0xx_timer.h"
 #include "mcu_stm32g0xx_adc.h"
+#include "mcu_stm32g0xx_uart.h"
 
 gpio_obj_t gpio_inst[GPIO_ID_MAX] = {
 		[LED1] = {
@@ -190,5 +191,24 @@ adc_obj_t adc_inst[ADC_ID_MAX] = {
 					},
 			},
 			.method  = &stm32_adc_method
+		},
+};
+
+uart_obj_t uart_inst[UART_ID_MAX] = {
+		[UART_LLC] = {
+			.ctx	= {
+					.id	 	= UART_LLC,
+					.hw_cfg	= {
+						.huart	= &huart3,
+					},
+					.sw_data	= {
+						.rx_size		= 0,
+						.rx_buffer 		= {0},
+						.tx_size		= 0,
+						.tx_buffer		= {0},
+						.flag_tx_busy	= 0,
+					},
+			},
+			.method = &stm32_uart_method
 		},
 };
