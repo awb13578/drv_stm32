@@ -26,4 +26,9 @@ typedef struct {
 	void (*start_interrupt) (timer_ctx_t *ctx);
 } timer_method_t;
 
+typedef struct {
+	timer_ctx_t ctx;
+	const timer_method_t *method;
+} timer_obj_t ;
+
 #endif /* INTERFACE_TIMER_H_ */

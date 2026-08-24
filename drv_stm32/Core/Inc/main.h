@@ -57,6 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define UART_RX_LLC_Pin GPIO_PIN_9
+#define UART_RX_LLC_GPIO_Port GPIOB
 #define MCU_VAC_SENS_Pin GPIO_PIN_0
 #define MCU_VAC_SENS_GPIO_Port GPIOA
 #define MCU_THERMAL_PFC_SENSE_Pin GPIO_PIN_1
@@ -83,6 +85,8 @@ void Error_Handler(void);
 #define SWD_LLC_GPIO_Port GPIOA
 #define SWCLK_LLC_Pin GPIO_PIN_14
 #define SWCLK_LLC_GPIO_Port GPIOA
+#define UART_TX_LLC_Pin GPIO_PIN_8
+#define UART_TX_LLC_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

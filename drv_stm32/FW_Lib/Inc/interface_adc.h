@@ -28,4 +28,9 @@ typedef struct {
 	uint16_t (*get_value) (adc_ctx_t *ctx);
 } adc_method_t;
 
+typedef struct {
+	adc_ctx_t ctx;
+	const adc_method_t *method;
+} adc_obj_t ;
+
 #endif /* INTERFACE_H_ */
