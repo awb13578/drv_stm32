@@ -5,5 +5,6 @@
 #define ENABLE_TIMER
 #define ENABLE_ADC
 #define ENABLE_UART
+#define ENABLE_CAN
 
 #endif /* _CONFIG_LIB_H_ */

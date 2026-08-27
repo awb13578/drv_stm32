@@ -6,6 +6,7 @@
 #include "interface_timer.h"
 #include "interface_adc.h"
 #include "interface_uart.h"
+#include "interface_can.h"
 
 extern gpio_obj_t gpio_inst[GPIO_ID_MAX];
 
@@ -17,5 +18,8 @@ extern adc_obj_t adc_inst[ADC_ID_MAX];
 
 extern UART_HandleTypeDef huart3;
 extern uart_obj_t uart_inst[UART_ID_MAX];
+
+extern FDCAN_HandleTypeDef hfdcan2;
+extern can_obj_t can_inst[CAN_ID_MAX];
 
 #endif /* BOARD_CONFIG_H_ */

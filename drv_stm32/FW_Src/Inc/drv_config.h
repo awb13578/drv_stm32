@@ -34,4 +34,11 @@ typedef enum {
 //	UART_RX_LLC			/* PB9 (Pin 1)	*/
 	} uart_id_t;
 
+typedef enum {
+	CANA		= 0,
+	CAN_ID_MAX
+//	CANA_RX			/* PB5 (Pin 29) */
+//	CANA_TX			/* PB1 (Pin 16) */
+} can_id_t;
+
 #endif /* DRV_CONFIG_H_ */
