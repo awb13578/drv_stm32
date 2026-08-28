@@ -8,17 +8,14 @@
 #include <string.h>
 
 #define UART_RX_BUFFER_SIZE 128
-#define UART_TX_BUFFER_SIZE 128
 
 typedef struct {
 	void *huart;
 } uart_hw_cfg_t;
 
 typedef struct {
-	uint16_t rx_size;
 	uint8_t rx_buffer[UART_RX_BUFFER_SIZE];
-	uint16_t tx_size;
-	uint8_t tx_buffer[UART_TX_BUFFER_SIZE];
+	uint8_t tx_data;
 	volatile uint8_t flag_tx_busy;
 } uart_sw_data_t;
 

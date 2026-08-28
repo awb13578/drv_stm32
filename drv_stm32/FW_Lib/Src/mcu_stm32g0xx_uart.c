@@ -6,8 +6,8 @@ static uart_ctx_t *uart_ctx = NULL;
 
 static void mcu_uart_send_message (uart_ctx_t *ctx) {
 	if (ctx && ctx->hw_cfg.huart) {
-		HAL_UART_Transmit_DMA(ctx->hw_cfg.huart, ctx->sw_data.tx_buffer, ctx->sw_data.tx_size);
 		ctx->sw_data.flag_tx_busy = 1;
+		HAL_UART_Transmit_DMA(ctx->hw_cfg.huart, &ctx->sw_data.tx_data, 1);
 	}
 }
 
@@ -20,17 +20,16 @@ void HAL_UART_TxCpltCallback (UART_HandleTypeDef *huart) {
 static void mcu_uart_receive_message (uart_ctx_t *ctx) {
 	if (ctx && ctx->hw_cfg.huart) {
 		uart_ctx = ctx;
-		HAL_UARTEx_ReceiveToIdle_DMA(ctx->hw_cfg.huart, ctx->sw_data.rx_buffer, sizeof(ctx->sw_data.rx_buffer));
+		HAL_UARTEx_ReceiveToIdle_DMA(ctx->hw_cfg.huart, ctx->sw_data.rx_buffer, UART_RX_BUFFER_SIZE);
 	}
 }
 
-extern void drv_uart_rx_callback(uint16_t size);
+extern void drv_uart_rx_callback (void);
 
-void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
+void HAL_UARTEx_RxEventCallback (UART_HandleTypeDef *huart, uint16_t Size) {
 	if (uart_ctx == NULL || !uart_ctx->hw_cfg.huart) return;
-	uart_ctx->sw_data.rx_size = Size;
-	drv_uart_rx_callback(uart_ctx->sw_data.rx_size);
-	HAL_UARTEx_ReceiveToIdle_DMA(uart_ctx->hw_cfg.huart, uart_ctx->sw_data.rx_buffer, sizeof(uart_ctx->sw_data.rx_buffer));
+	drv_uart_rx_callback();
+	HAL_UARTEx_ReceiveToIdle_DMA(uart_ctx->hw_cfg.huart, uart_ctx->sw_data.rx_buffer, UART_RX_BUFFER_SIZE);
 }
 
 const uart_method_t stm32_uart_method = {

@@ -203,10 +203,8 @@ uart_obj_t uart_inst[UART_ID_MAX] = {
 						.huart	= &huart3,
 					},
 					.sw_data	= {
-						.rx_size		= 0,
 						.rx_buffer 		= {0},
-						.tx_size		= 0,
-						.tx_buffer		= {0},
+						.tx_data		= 0,
 						.flag_tx_busy	= 0,
 					},
 			},
