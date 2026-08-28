@@ -25,6 +25,7 @@
 #include "drv_timer_core.h"
 #include "drv_adc_core.h"
 #include "drv_uart_core.h"
+#include "drv_can_core.h"
 
 /* USER CODE END Includes */
 
@@ -56,10 +57,13 @@ DMA_HandleTypeDef hdma_usart3_rx;
 DMA_HandleTypeDef hdma_usart3_tx;
 
 /* USER CODE BEGIN PV */
-uint32_t i;
-uint8_t *data;
+static uint32_t rx_id = 0;
+static uint8_t rx_data = 0;
+
 uint8_t tx[2];
-uint32_t count;
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -76,17 +80,13 @@ static void MX_FDCAN2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-//void drv_interrupt_callback (void) {
-//	if (i++>=9999) {
-//		drv_gpio_toggle_pin(LED1);
-//		i=0;
-//	}
-//}
 
-void drv_uart_rx_callback (uint16_t size) {
-	count++;
-//	drv_uart_send_message(UART_LLC ,data ,size);
+void drv_can_rx_callback () {
+	drv_gpio_toggle_pin(LED3);
+	drv_can_send_message (rx_id, &rx_data);
 }
+
+
 /* USER CODE END 0 */
 
 /**
@@ -125,10 +125,8 @@ int main(void)
   MX_FDCAN2_Init();
   /* USER CODE BEGIN 2 */
   drv_gpio_init();
-//  drv_timer_start_interrupt();
-  drv_uart_init();
-  data = drv_uart_receive_message(UART_LLC);
-
+  drv_can_init();
+  drv_can_receive_message(&rx_id,&rx_data);
 	  tx[0] = 0xA;
 	  tx[1] = 0xB;
 
@@ -142,8 +140,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-//	  drv_uart_send_message(UART_LLC,tx,sizeof(tx));
-//	  HAL_Delay(1000);
+	  drv_can_send_message(0x123,tx);
+	  HAL_Delay(1000);
 
 
   }
