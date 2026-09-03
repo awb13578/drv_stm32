@@ -58,7 +58,7 @@ DMA_HandleTypeDef hdma_usart3_tx;
 
 /* USER CODE BEGIN PV */
 static uint32_t rx_id = 0;
-static uint8_t rx_data = 0;
+static uint8_t rx_buffer[64] = {0};
 
 uint8_t tx[2];
 
@@ -83,7 +83,7 @@ static void MX_FDCAN2_Init(void);
 
 void drv_can_rx_callback () {
 	drv_gpio_toggle_pin(LED3);
-	drv_can_send_message (rx_id, &rx_data);
+	drv_can_send_message (rx_id, rx_buffer);
 }
 
 
@@ -126,8 +126,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   drv_gpio_init();
   drv_can_init();
-  drv_can_receive_message(&rx_id,&rx_data);
-	  tx[0] = 0xA;
+  drv_can_receive_message(&rx_id, rx_buffer);
+	  tx[0] = 0x1C;
 	  tx[1] = 0xB;
 
   /* USER CODE END 2 */
@@ -332,7 +332,7 @@ static void MX_FDCAN2_Init(void)
   hfdcan2.Init.DataTimeSeg2 = 1;
   hfdcan2.Init.StdFiltersNbr = 1;
   hfdcan2.Init.ExtFiltersNbr = 0;
-  hfdcan2.Init.TxFifoQueueMode = FDCAN_TX_QUEUE_OPERATION;
+  hfdcan2.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
   if (HAL_FDCAN_Init(&hfdcan2) != HAL_OK)
   {
     Error_Handler();

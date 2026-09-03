@@ -24,13 +24,23 @@ static can_status_t mcu_can_init (can_ctx_t *ctx) {
 	if (sFilterConfig_ctx != NULL) {
 		sFilterConfig_ctx->IdType 		= FDCAN_STANDARD_ID;
 		sFilterConfig_ctx->FilterIndex 	= 0;
-		sFilterConfig_ctx->FilterType 	= FDCAN_FILTER_MASK;
+		sFilterConfig_ctx->FilterType 	= FDCAN_FILTER_RANGE;
 		sFilterConfig_ctx->FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
 		sFilterConfig_ctx->FilterID1 	= 0x000;
-		sFilterConfig_ctx->FilterID2 	= 0x000;
+		sFilterConfig_ctx->FilterID2 	= 0x7FF;
 		if (HAL_FDCAN_ConfigFilter(ctx->hw_cfg.hfdcan, ctx->sw_data.sFilterConfig) != HAL_OK) {
 			return CAN_ERROR;
 		}
+	}
+
+	/* Accept non-matching standard & extended frames to RX FIFO 0 */
+	if (HAL_FDCAN_ConfigGlobalFilter(ctx->hw_cfg.hfdcan, FDCAN_ACCEPT_IN_RX_FIFO0, FDCAN_ACCEPT_IN_RX_FIFO0, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE) != HAL_OK) {
+		return CAN_ERROR;
+	}
+
+	/* Route RX FIFO 0 new message interrupt to Line 0 (TIM16_FDCAN_IT0) */
+	if (HAL_FDCAN_ConfigInterruptLines(ctx->hw_cfg.hfdcan, FDCAN_IT_GROUP_RX_FIFO0, FDCAN_INTERRUPT_LINE0) != HAL_OK) {
+		return CAN_ERROR;
 	}
 
     if (HAL_FDCAN_Start(ctx->hw_cfg.hfdcan) != HAL_OK) {
@@ -49,8 +59,10 @@ static can_status_t mcu_can_send_message (can_ctx_t *ctx) {
 	if (TxHeader_ctx != NULL) {
 	    TxHeader_ctx->Identifier = ctx->sw_data.TxID;
 	}
-	if (HAL_FDCAN_GetTxFifoFreeLevel(ctx->hw_cfg.hfdcan) == 0) return CAN_BUSY;
-	return HAL_FDCAN_AddMessageToTxFifoQ(ctx->hw_cfg.hfdcan, TxHeader_ctx, ctx->sw_data.TxData);
+
+	FDCAN_HandleTypeDef *hfdcan = (FDCAN_HandleTypeDef *)ctx->hw_cfg.hfdcan;
+	if ((hfdcan->Instance->TXFQS & FDCAN_TXFQS_TFQF) != 0U) return CAN_BUSY;
+	return HAL_FDCAN_AddMessageToTxFifoQ(hfdcan, TxHeader_ctx, ctx->sw_data.TxData);
 }
 
 static can_status_t mcu_can_receive_message (can_ctx_t *ctx) {

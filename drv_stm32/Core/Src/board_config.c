@@ -218,7 +218,7 @@ static uint32_t rxid;
 static FDCAN_TxHeaderTypeDef cana_tx_header;
 static FDCAN_RxHeaderTypeDef cana_rx_header;
 static FDCAN_FilterTypeDef   cana_filter;
-static uint8_t rxdata;
+static uint8_t rxdata[CAN_FD_BUFFER_SIZE];
 static uint8_t txdata;
 
 can_obj_t can_inst[CAN_ID_MAX] = {
@@ -234,7 +234,7 @@ can_obj_t can_inst[CAN_ID_MAX] = {
 						.RxHeader	= &cana_rx_header,
 						.TxHeader	= &cana_tx_header,
 						.sFilterConfig	= &cana_filter,
-						.RxData	= &rxdata,
+						.RxData	= rxdata,
 						.TxData	= &txdata,
 					},
 			},
