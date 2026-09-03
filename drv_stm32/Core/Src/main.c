@@ -83,7 +83,7 @@ static void MX_FDCAN2_Init(void);
 
 void drv_can_rx_callback () {
 	drv_gpio_toggle_pin(LED3);
-	drv_can_send_message (rx_id, rx_buffer);
+	drv_can_send_message (0x002, rx_buffer);
 }
 
 
@@ -140,8 +140,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  drv_can_send_message(0x123,tx);
-	  HAL_Delay(1000);
+//	  drv_can_send_message(0x001,tx);
+//	  HAL_Delay(1000);
 
 
   }

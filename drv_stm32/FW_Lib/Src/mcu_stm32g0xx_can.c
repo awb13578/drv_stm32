@@ -26,7 +26,7 @@ static can_status_t mcu_can_init (can_ctx_t *ctx) {
 		sFilterConfig_ctx->FilterIndex 	= 0;
 		sFilterConfig_ctx->FilterType 	= FDCAN_FILTER_RANGE;
 		sFilterConfig_ctx->FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
-		sFilterConfig_ctx->FilterID1 	= 0x000;
+		sFilterConfig_ctx->FilterID1 	= 0x002;
 		sFilterConfig_ctx->FilterID2 	= 0x7FF;
 		if (HAL_FDCAN_ConfigFilter(ctx->hw_cfg.hfdcan, ctx->sw_data.sFilterConfig) != HAL_OK) {
 			return CAN_ERROR;
@@ -34,7 +34,7 @@ static can_status_t mcu_can_init (can_ctx_t *ctx) {
 	}
 
 	/* Accept non-matching standard & extended frames to RX FIFO 0 */
-	if (HAL_FDCAN_ConfigGlobalFilter(ctx->hw_cfg.hfdcan, FDCAN_ACCEPT_IN_RX_FIFO0, FDCAN_ACCEPT_IN_RX_FIFO0, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE) != HAL_OK) {
+	if (HAL_FDCAN_ConfigGlobalFilter(ctx->hw_cfg.hfdcan, FDCAN_REJECT, FDCAN_REJECT, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE) != HAL_OK) {
 		return CAN_ERROR;
 	}
 
