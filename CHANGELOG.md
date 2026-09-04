@@ -7,7 +7,8 @@
 | 3   | 12/08/2026    | v1.0.2              | Bổ sung hậu tố đằng sau các hàm của driver gpio(file .h) | Nguyễn Quốc Anh   | Obsolete |
 | 4   | 12/08/2026    | v1.0.3              | Phát triển tầng driver Timer | Nguyễn Quốc Anh   | Obsolete |
 | 5   | 14/08/2026    | v1.0.4              | Phát triển tầng driver ADC | Nguyễn Quốc Anh   | Obsolete |
-| 6   | 21/08/2026    | v1.1.0              | Tái cấu trúc code và phát triển tầng driver UART | Nguyễn Quốc Anh   | Active   |
+| 6   | 21/08/2026    | v1.1.0              | Tái cấu trúc code và phát triển tầng driver UART | Nguyễn Quốc Anh   | Obsolete |
+| 7   | 04/09/2026    | v1.2.0              | Phát triển tầng driver CAN | Nguyễn Quốc Anh   | Active   |
 
 Phiên bản được đánh theo cấu trúc: MAJOR.MINOR.PATCH
 ### **MAJOR** — Thay đổi lớn, *breaking changes*
