@@ -85,6 +85,10 @@ void Error_Handler(void);
 #define SWD_LLC_GPIO_Port GPIOA
 #define SWCLK_LLC_Pin GPIO_PIN_14
 #define SWCLK_LLC_GPIO_Port GPIOA
+#define CANA_RX_Pin GPIO_PIN_5
+#define CANA_RX_GPIO_Port GPIOB
+#define CANA_TX_Pin GPIO_PIN_6
+#define CANA_TX_GPIO_Port GPIOB
 #define UART_TX_LLC_Pin GPIO_PIN_8
 #define UART_TX_LLC_GPIO_Port GPIOB
 

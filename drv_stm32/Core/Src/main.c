@@ -25,6 +25,7 @@
 #include "drv_timer_core.h"
 #include "drv_adc_core.h"
 #include "drv_uart_core.h"
+#include "drv_can_core.h"
 
 /* USER CODE END Includes */
 
@@ -47,6 +48,8 @@
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
 
+FDCAN_HandleTypeDef hfdcan2;
+
 TIM_HandleTypeDef htim2;
 
 UART_HandleTypeDef huart3;
@@ -54,10 +57,13 @@ DMA_HandleTypeDef hdma_usart3_rx;
 DMA_HandleTypeDef hdma_usart3_tx;
 
 /* USER CODE BEGIN PV */
-uint32_t i;
-uint8_t *data;
+static uint32_t rx_id = 0;
+static uint8_t rx_buffer[64] = {0};
+
 uint8_t tx[2];
-uint32_t count;
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -67,23 +73,20 @@ static void MX_DMA_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_USART3_UART_Init(void);
+static void MX_FDCAN2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-//void drv_interrupt_callback (void) {
-//	if (i++>=9999) {
-//		drv_gpio_toggle_pin(LED1);
-//		i=0;
-//	}
-//}
 
-void drv_uart_rx_callback (uint16_t size) {
-	count++;
-//	drv_uart_send_message(UART_LLC ,data ,size);
+void drv_can_rx_callback () {
+	drv_gpio_toggle_pin(LED3);
+	drv_can_send_message (0x002, rx_buffer);
 }
+
+
 /* USER CODE END 0 */
 
 /**
@@ -119,13 +122,12 @@ int main(void)
   MX_TIM2_Init();
   MX_ADC1_Init();
   MX_USART3_UART_Init();
+  MX_FDCAN2_Init();
   /* USER CODE BEGIN 2 */
   drv_gpio_init();
-//  drv_timer_start_interrupt();
-  drv_uart_init();
-  data = drv_uart_receive_message(UART_LLC);
-
-	  tx[0] = 0xA;
+  drv_can_init();
+  drv_can_receive_message(&rx_id, rx_buffer);
+	  tx[0] = 0x1C;
 	  tx[1] = 0xB;
 
   /* USER CODE END 2 */
@@ -138,7 +140,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-//	  drv_uart_send_message(UART_LLC,tx,sizeof(tx));
+//	  drv_can_send_message(0x001,tx);
 //	  HAL_Delay(1000);
 
 
@@ -295,6 +297,49 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
+
+}
+
+/**
+  * @brief FDCAN2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_FDCAN2_Init(void)
+{
+
+  /* USER CODE BEGIN FDCAN2_Init 0 */
+
+  /* USER CODE END FDCAN2_Init 0 */
+
+  /* USER CODE BEGIN FDCAN2_Init 1 */
+
+  /* USER CODE END FDCAN2_Init 1 */
+  hfdcan2.Instance = FDCAN2;
+  hfdcan2.Init.ClockDivider = FDCAN_CLOCK_DIV1;
+  hfdcan2.Init.FrameFormat = FDCAN_FRAME_FD_NO_BRS;
+  hfdcan2.Init.Mode = FDCAN_MODE_NORMAL;
+  hfdcan2.Init.AutoRetransmission = ENABLE;
+  hfdcan2.Init.TransmitPause = DISABLE;
+  hfdcan2.Init.ProtocolException = DISABLE;
+  hfdcan2.Init.NominalPrescaler = 1;
+  hfdcan2.Init.NominalSyncJumpWidth = 16;
+  hfdcan2.Init.NominalTimeSeg1 = 47;
+  hfdcan2.Init.NominalTimeSeg2 = 16;
+  hfdcan2.Init.DataPrescaler = 1;
+  hfdcan2.Init.DataSyncJumpWidth = 1;
+  hfdcan2.Init.DataTimeSeg1 = 1;
+  hfdcan2.Init.DataTimeSeg2 = 1;
+  hfdcan2.Init.StdFiltersNbr = 1;
+  hfdcan2.Init.ExtFiltersNbr = 0;
+  hfdcan2.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
+  if (HAL_FDCAN_Init(&hfdcan2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN FDCAN2_Init 2 */
+
+  /* USER CODE END FDCAN2_Init 2 */
 
 }
 

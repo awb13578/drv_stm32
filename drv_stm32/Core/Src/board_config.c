@@ -3,6 +3,7 @@
 #include "mcu_stm32g0xx_timer.h"
 #include "mcu_stm32g0xx_adc.h"
 #include "mcu_stm32g0xx_uart.h"
+#include "mcu_stm32g0xx_can.h"
 
 gpio_obj_t gpio_inst[GPIO_ID_MAX] = {
 		[LED1] = {
@@ -210,5 +211,33 @@ uart_obj_t uart_inst[UART_ID_MAX] = {
 					},
 			},
 			.method = &stm32_uart_method
+		},
+};
+
+static uint32_t rxid;
+static FDCAN_TxHeaderTypeDef cana_tx_header;
+static FDCAN_RxHeaderTypeDef cana_rx_header;
+static FDCAN_FilterTypeDef   cana_filter;
+static uint8_t rxdata[CAN_FD_BUFFER_SIZE];
+static uint8_t txdata;
+
+can_obj_t can_inst[CAN_ID_MAX] = {
+		[CANA] = {
+			.ctx	= {
+					.id		= CANA,
+					.hw_cfg = {
+						.hfdcan	= &hfdcan2
+					},
+					.sw_data = {
+						.RxID	= &rxid,
+						.TxID	= 0x00,
+						.RxHeader	= &cana_rx_header,
+						.TxHeader	= &cana_tx_header,
+						.sFilterConfig	= &cana_filter,
+						.RxData	= rxdata,
+						.TxData	= &txdata,
+					},
+			},
+			.method = &stm32_can_method
 		},
 };
